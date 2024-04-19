@@ -1,9 +1,11 @@
+import 'package:clean_architecture_biv/app/app_bloc/cubit/app_cubit.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../datasource/datasource.dart';
 
+import '../datasource/remote/services/authentication/auth_api_services.dart';
 import '../shared/helper/helper.dart';
 
 final di = GetIt.asNewInstance()..allowReassignment = true;
@@ -27,15 +29,17 @@ Future<void> initializeDependencies() async {
     ..registerLazySingleton<UserLocalDataSource>(() =>
         UserLocalDatasourceImplement(
             di<FlutterSecureStorage>(), di<SharedPreferences>()))
-    ..registerFactory<AccessTokenInterceptor>(
-        () => AccessTokenInterceptor(di<UserLocalDataSource>()))
-    ..registerLazySingleton<RefreshTokenApiClient>(() => RefreshTokenApiClient(
-        di<HeaderInterceptor>(), di<AccessTokenInterceptor>()))
-    ..registerLazySingleton<RefreshTokenApiService>(
-        () => RefreshTokenApiService(di<RefreshTokenApiClient>()))
-    ..registerLazySingleton<AuthAppServerApiClient>(() =>
-        AuthAppServerApiClient(di<HeaderInterceptor>(),
-            di<AccessTokenInterceptor>(), di<RefreshTokenInterceptor>()))
+    // ..registerFactory<AccessTokenInterceptor>(
+    //     () => AccessTokenInterceptor(di<UserLocalDataSource>()))
+    // ..registerLazySingleton<RefreshTokenApiClient>(() => RefreshTokenApiClient(
+    //     di<HeaderInterceptor>(), di<AccessTokenInterceptor>()))
+    // ..registerLazySingleton<RefreshTokenApiService>(
+    //     () => RefreshTokenApiService(di<RefreshTokenApiClient>()))
+    // ..registerLazySingleton<AuthAppServerApiClient>(() =>
+    //     AuthAppServerApiClient(di<HeaderInterceptor>(),
+    //         di<AccessTokenInterceptor>(), di<RefreshTokenInterceptor>()))
+    ..registerLazySingleton<AuthApiServices>(
+        () => AuthApiServices(di<UserLocalDataSource>()))
     ..registerFactory<FirebaseStorageErrorResponseMapper>(
         () => FirebaseStorageErrorResponseMapper())
     ..registerFactory<JsonArrayErrorResponseMapper>(

@@ -41,4 +41,4 @@ export 'remote/middleware/custom_log_interceptor.dart';
 export 'remote/middleware/header_interceptor.dart';
 export 'remote/middleware/refresh_token_interceptor.dart';
 export 'remote/middleware/retry_on_error_interceptor.dart';
-export 'remote/services/refresh_token_api_service.dart';
+export 'remote/services/authentication/refresh_token_api_service.dart';

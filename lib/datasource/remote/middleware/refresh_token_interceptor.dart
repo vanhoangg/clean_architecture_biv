@@ -8,7 +8,7 @@ import 'package:tuple/tuple.dart';
 
 import '../../../shared/constant/server/server_request_response_constants.dart';
 import '../client/none_auth_app_server_api_client.dart';
-import '../services/refresh_token_api_service.dart';
+import '../services/authentication/refresh_token_api_service.dart';
 import 'base_interceptor.dart';
 
 class RefreshTokenInterceptor extends BaseInterceptor {

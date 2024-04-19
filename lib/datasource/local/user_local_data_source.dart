@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:clean_architecture_biv/shared/mixin/log_mixin.dart';
+
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -11,7 +12,7 @@ import '../../shared/constant/shared_preference_constants.dart';
 
 abstract class UserLocalDataSource {
   ///* Token
-  Future<void> saveAccessToken(String token);
+  Future<bool> saveAccessToken(String token);
   Future<void> saveRefreshToken(String token);
   Future<void> logout();
   Future<String?> get accessToken;
@@ -50,7 +51,8 @@ class UserLocalDatasourceImplement
   final SharedPreferences _sharedPreferences;
 
   @override
-  Future<void> saveAccessToken(String token) async =>
+  Future<bool> saveAccessToken(String token) async {
+    try {
       await _secureStorage.write(
           key: SharedPreferenceKeys.accessToken,
           value: token,
@@ -62,6 +64,13 @@ class UserLocalDatasourceImplement
           iOptions: const IOSOptions(
               synchronizable: false,
               accessibility: KeychainAccessibility.first_unlock_this_device));
+      return true;
+    } catch (e) {
+      logE(e);
+      return false;
+    }
+  }
+
   @override
   Future<String?> get accessToken =>
       _secureStorage.read(key: SharedPreferenceKeys.accessToken);

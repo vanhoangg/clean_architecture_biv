@@ -1,4 +1,4 @@
-import '../client/refresh_token_api_client.dart';
+import '../../client/refresh_token_api_client.dart';
 
 class RefreshTokenApiService {
   RefreshTokenApiService(this._refreshTokenApiClient);
