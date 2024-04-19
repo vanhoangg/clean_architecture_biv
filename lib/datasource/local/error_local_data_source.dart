@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 
-import '../../util/check_null_util.dart';
+import '../../shared/util/function/check_null_util.dart';
 
 abstract class ErrorLocalDataSource {
   Future<String?> getMessageError(int? code);

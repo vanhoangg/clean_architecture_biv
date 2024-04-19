@@ -1,6 +1,6 @@
 {
-    "name": "test_gpt_application",
-    "short_name": "test_gpt_application",
+    "name": "clean_architecture_biv",
+    "short_name": "clean_architecture_biv",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
