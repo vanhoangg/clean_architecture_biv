@@ -1,5 +1,4 @@
-import '../model/shared_enum.dart';
-import 'env_constants.dart';
+import 'package:clean_architecture_biv/flavors.dart';
 
 class UrlConstants {
   const UrlConstants._();
@@ -26,14 +25,12 @@ class UrlConstants {
   static const refreshTokenRoute = '$authRoute/refresh';
 
   static String get appApiBaseUrl {
-    switch (EnvConstants.flavor) {
-      case Flavor.develop:
+    switch (F.appFlavor) {
+      case Flavor.dev:
         return 'https://dummyjson.com';
-      case Flavor.qa:
+      case Flavor.stg:
         return 'https://dummyjson.com';
-      case Flavor.staging:
-        return 'https://dummyjson.com';
-      case Flavor.production:
+      default:
         return 'https://dummyjson.com';
     }
   }

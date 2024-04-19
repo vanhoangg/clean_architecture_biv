@@ -3,7 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../datasource/datasource.dart';
-import '../shared/constant/env_constants.dart';
+
 import '../shared/helper/helper.dart';
 
 final di = GetIt.asNewInstance()..allowReassignment = true;
@@ -11,7 +11,7 @@ final di = GetIt.asNewInstance()..allowReassignment = true;
 Future<void> initializeDependencies() async {
   final SharedPreferences sharedPreferences =
       await SharedPreferences.getInstance();
-  EnvConstants.init();
+
   di
     ..registerLazySingleton<AppInfo>(() => AppInfo())
     ..registerFactory<HeaderInterceptor>(() => HeaderInterceptor(di<AppInfo>()))
