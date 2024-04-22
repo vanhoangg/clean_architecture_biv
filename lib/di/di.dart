@@ -1,11 +1,11 @@
-import 'package:clean_architecture_biv/app/app_bloc/cubit/app_cubit.dart';
+import 'package:clean_architecture_biv/presentation/app/app_bloc/cubit/app_cubit.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../datasource/datasource.dart';
+import '../data/datasource/datasource.dart';
 
-import '../datasource/remote/services/authentication/auth_api_services.dart';
+import '../data/datasource/remote/services/authentication/auth_api_services.dart';
 import '../shared/helper/helper.dart';
 
 final di = GetIt.asNewInstance()..allowReassignment = true;
@@ -52,7 +52,8 @@ Future<void> initializeDependencies() async {
           di<RefreshTokenApiService>(),
           di<NoneAuthAppServerApiClient>(),
         ))
-    ..registerFactory<CustomLogInterceptor>(() => CustomLogInterceptor());
+    ..registerFactory<CustomLogInterceptor>(() => CustomLogInterceptor())
+    ..registerLazySingleton<AppCubit>(() => AppCubit());
 
   // await DomainConfig.getInstance().init();
   // await _applicationConfig.init();
