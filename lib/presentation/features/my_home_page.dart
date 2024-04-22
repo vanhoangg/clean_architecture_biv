@@ -77,67 +77,67 @@ class _MyHomePageState extends State<MyHomePage> {
     // Log.d Theme
     Log.d(Theme.of(context).primaryTextTheme.displayLarge?.color.toString());
     return Scaffold(
-        appBar: AppBar(
-          title: Text(F.title),
-        ),
+        // appBar: AppBar(
+        //   title: Text(F.title),
+        // ),
         body: ListView(
-          children: [
-            Text(
-              '.displayLarge',
-              style: Theme.of(context).textTheme.displayLarge,
-            ),
-            Text(
-              '.displayMedium',
-              style: Theme.of(context).textTheme.displayMedium,
-            ),
-            Text(
-              '.displaySmall',
-              style: Theme.of(context).textTheme.displaySmall,
-            ),
-            Text(
-              '.headlineMedium',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            Text(
-              '.headlineSmall',
-              style: Theme.of(context).textTheme.headlineSmall,
-            ),
-            Text(
-              '.titleLarge',
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            Text(
-              '.titleMedium',
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-            Text(
-              '.titleSmall',
-              style: Theme.of(context).textTheme.titleSmall,
-            ),
-            Text(
-              '.bodyLarge',
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-            Text(
-              '.bodyMedium',
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
-            Text(
-              '.bodySmall',
-              style: Theme.of(context).textTheme.bodySmall,
-            ),
-            Text(
-              '.labelLarge',
-              style: Theme.of(context).textTheme.labelLarge,
-            ),
-            Text(
-              '.labelSmall',
-              style: Theme.of(context).textTheme.labelSmall,
-            ),
-            ...List.generate(colorBoxes.length, (index) => colorBoxes[index]),
-            changeThemeButton(context),
-          ],
-        ));
+      children: [
+        Text(
+          '.displayLarge',
+          style: Theme.of(context).textTheme.displayLarge,
+        ),
+        Text(
+          '.displayMedium',
+          style: Theme.of(context).textTheme.displayMedium,
+        ),
+        Text(
+          '.displaySmall',
+          style: Theme.of(context).textTheme.displaySmall,
+        ),
+        Text(
+          '.headlineMedium',
+          style: Theme.of(context).textTheme.headlineMedium,
+        ),
+        Text(
+          '.headlineSmall',
+          style: Theme.of(context).textTheme.headlineSmall,
+        ),
+        Text(
+          '.titleLarge',
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
+        Text(
+          '.titleMedium',
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+        Text(
+          '.titleSmall',
+          style: Theme.of(context).textTheme.titleSmall,
+        ),
+        Text(
+          '.bodyLarge',
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
+        Text(
+          '.bodyMedium',
+          style: Theme.of(context).textTheme.bodyMedium,
+        ),
+        Text(
+          '.bodySmall',
+          style: Theme.of(context).textTheme.bodySmall,
+        ),
+        Text(
+          '.labelLarge',
+          style: Theme.of(context).textTheme.labelLarge,
+        ),
+        Text(
+          '.labelSmall',
+          style: Theme.of(context).textTheme.labelSmall,
+        ),
+        ...List.generate(colorBoxes.length, (index) => colorBoxes[index]),
+        changeThemeButton(context),
+      ],
+    ));
   }
 
   Center changeThemeButton(BuildContext context) {

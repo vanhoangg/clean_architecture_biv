@@ -4,13 +4,13 @@ class AppTextTheme {
   static TextTheme lightTextTheme = const TextTheme(
     displayLarge: TextStyle(
       color: Color(0xFF201A19),
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w600,
       fontSize: 57,
       letterSpacing: 0,
     ),
     displayMedium: TextStyle(
       color: Color(0xFF201A19),
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w500,
       fontSize: 45,
       letterSpacing: 0,
     ),
@@ -22,13 +22,13 @@ class AppTextTheme {
     ),
     headlineLarge: TextStyle(
       color: Color(0xFF201A19),
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w600,
       fontSize: 32,
       letterSpacing: 0,
     ),
     headlineMedium: TextStyle(
       color: Color(0xFF201A19),
-      fontWeight: FontWeight.w600,
+      fontWeight: FontWeight.w500,
       fontSize: 28,
       letterSpacing: 0,
     ),
@@ -40,7 +40,7 @@ class AppTextTheme {
     ),
     titleLarge: TextStyle(
       color: Color(0xFF201A19),
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w600,
       fontSize: 22,
       letterSpacing: 0,
     ),
@@ -52,19 +52,19 @@ class AppTextTheme {
     ),
     titleSmall: TextStyle(
       color: Color(0xFF201A19),
-      fontWeight: FontWeight.w500,
+      fontWeight: FontWeight.w400,
       fontSize: 14,
       letterSpacing: 0,
     ),
     bodyLarge: TextStyle(
       color: Color(0xFF201A19),
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w600,
       fontSize: 16,
       letterSpacing: 0,
     ),
     bodyMedium: TextStyle(
       color: Color(0xFF201A19),
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w500,
       fontSize: 14,
       letterSpacing: 0,
     ),
@@ -76,7 +76,7 @@ class AppTextTheme {
     ),
     labelLarge: TextStyle(
       color: Color(0xFF201A19),
-      fontWeight: FontWeight.w500,
+      fontWeight: FontWeight.w600,
       fontSize: 14,
       letterSpacing: 0,
     ),
@@ -88,7 +88,7 @@ class AppTextTheme {
     ),
     labelSmall: TextStyle(
       color: Color(0xFF201A19),
-      fontWeight: FontWeight.w500,
+      fontWeight: FontWeight.w400,
       fontSize: 11,
       letterSpacing: 0,
     ),
@@ -97,13 +97,13 @@ class AppTextTheme {
   static TextTheme darkTextTheme = const TextTheme(
     displayLarge: TextStyle(
       color: Color(0xFFFFFFFF),
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w600,
       fontSize: 57,
       letterSpacing: 0,
     ),
     displayMedium: TextStyle(
       color: Color(0xFFFFFFFF),
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w500,
       fontSize: 45,
       letterSpacing: 0,
     ),
@@ -115,13 +115,13 @@ class AppTextTheme {
     ),
     headlineLarge: TextStyle(
       color: Color(0xFFFFFFFF),
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w600,
       fontSize: 32,
       letterSpacing: 0,
     ),
     headlineMedium: TextStyle(
       color: Color(0xFFFFFFFF),
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w500,
       fontSize: 28,
       letterSpacing: 0,
     ),
@@ -133,7 +133,7 @@ class AppTextTheme {
     ),
     titleLarge: TextStyle(
       color: Color(0xFFFFFFFF),
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w600,
       fontSize: 22,
       letterSpacing: 0,
     ),
@@ -145,19 +145,19 @@ class AppTextTheme {
     ),
     titleSmall: TextStyle(
       color: Color(0xFFFFFFFF),
-      fontWeight: FontWeight.w500,
+      fontWeight: FontWeight.w400,
       fontSize: 14,
       letterSpacing: 0,
     ),
     bodyLarge: TextStyle(
       color: Color(0xFFFFFFFF),
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w600,
       fontSize: 16,
       letterSpacing: 0,
     ),
     bodyMedium: TextStyle(
       color: Color(0xFFFFFFFF),
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w500,
       fontSize: 14,
       letterSpacing: 0,
     ),
@@ -169,7 +169,7 @@ class AppTextTheme {
     ),
     labelLarge: TextStyle(
       color: Color(0xFFFFFFFF),
-      fontWeight: FontWeight.w500,
+      fontWeight: FontWeight.w600,
       fontSize: 14,
       letterSpacing: 0,
     ),
@@ -181,7 +181,7 @@ class AppTextTheme {
     ),
     labelSmall: TextStyle(
       color: Color(0xFFFFFFFF),
-      fontWeight: FontWeight.w500,
+      fontWeight: FontWeight.w400,
       fontSize: 11,
       letterSpacing: 0,
     ),
