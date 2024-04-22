@@ -19,59 +19,59 @@ class _MyHomePageState extends State<MyHomePage> {
     List<Widget> colorBoxes = [
       ColoredBox(
         color: Theme.of(context).primaryColor,
-        child: const Text('Primary Color'),
+        child: const Text('primaryColor'),
       ),
       ColoredBox(
         color: Theme.of(context).colorScheme.secondary,
-        child: const Text('Accent Color'),
+        child: const Text('colorScheme.secondary'),
       ),
       ColoredBox(
         color: Theme.of(context).colorScheme.background,
-        child: const Text('Background Color'),
+        child: const Text('colorScheme.background'),
       ),
       ColoredBox(
         color: Theme.of(context).scaffoldBackgroundColor,
-        child: const Text('Scaffold Background Color'),
+        child: const Text('scaffoldBackgroundColor'),
       ),
       ColoredBox(
         color: Theme.of(context).cardColor,
-        child: const Text('Card Color'),
+        child: const Text('cardColor'),
       ),
       ColoredBox(
         color: Theme.of(context).dividerColor,
-        child: const Text('Divider Color'),
+        child: const Text('dividerColor'),
       ),
       ColoredBox(
         color: Theme.of(context).focusColor,
-        child: const Text('Focus Color'),
+        child: const Text('focusColor'),
       ),
       ColoredBox(
         color: Theme.of(context).hoverColor,
-        child: const Text('Hover Color'),
+        child: const Text('hoverColor'),
       ),
       ColoredBox(
         color: Theme.of(context).highlightColor,
-        child: const Text('Highlight Color'),
+        child: const Text('highlightColor'),
       ),
       ColoredBox(
         color: Theme.of(context).splashColor,
-        child: const Text('Splash Color'),
+        child: const Text('splashColor'),
       ),
       ColoredBox(
         color: Theme.of(context).unselectedWidgetColor,
-        child: const Text('Unselected Widget Color'),
+        child: const Text('unselectedWidgetColor'),
       ),
       ColoredBox(
         color: Theme.of(context).disabledColor,
-        child: const Text('Disabled Color'),
+        child: const Text('disabledColor'),
       ),
       ColoredBox(
         color: Theme.of(context).secondaryHeaderColor,
-        child: const Text('Secondary Header Color'),
+        child: const Text('secondaryHeaderColor'),
       ),
       ColoredBox(
         color: Theme.of(context).dialogBackgroundColor,
-        child: const Text('Dialog Background Color'),
+        child: const Text('dialogBackgroundColor'),
       ),
     ];
     // Log.d Theme
@@ -83,76 +83,75 @@ class _MyHomePageState extends State<MyHomePage> {
         body: ListView(
           children: [
             Text(
-              'Headline1',
+              '.displayLarge',
               style: Theme.of(context).textTheme.displayLarge,
             ),
             Text(
-              'Headline2',
+              '.displayMedium',
               style: Theme.of(context).textTheme.displayMedium,
             ),
             Text(
-              'Headline3',
+              '.displaySmall',
               style: Theme.of(context).textTheme.displaySmall,
             ),
             Text(
-              'Headline4',
+              '.headlineMedium',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             Text(
-              'Headline5',
+              '.headlineSmall',
               style: Theme.of(context).textTheme.headlineSmall,
             ),
             Text(
-              'Headline6',
+              '.titleLarge',
               style: Theme.of(context).textTheme.titleLarge,
             ),
             Text(
-              'Subtitle1',
+              '.titleMedium',
               style: Theme.of(context).textTheme.titleMedium,
             ),
             Text(
-              'Subtitle2',
+              '.titleSmall',
               style: Theme.of(context).textTheme.titleSmall,
             ),
             Text(
-              'BodyText1',
+              '.bodyLarge',
               style: Theme.of(context).textTheme.bodyLarge,
             ),
             Text(
-              'BodyText2',
+              '.bodyMedium',
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             Text(
-              'Caption',
+              '.bodySmall',
               style: Theme.of(context).textTheme.bodySmall,
             ),
             Text(
-              'Button',
+              '.labelLarge',
               style: Theme.of(context).textTheme.labelLarge,
             ),
             Text(
-              'Overline',
+              '.labelSmall',
               style: Theme.of(context).textTheme.labelSmall,
             ),
-            Column(
-              children: colorBoxes,
-            ),
-            Center(
-              child: TextButton(
-                onPressed: () {
-                  _appCubit.changeAppTheme();
-                },
-                child: Text('CLICK ME NOW ${F.title}',
-                    style: TextStyle(
-                      color: Theme.of(context)
-                          .primaryTextTheme
-                          .displayLarge
-                          ?.color,
-                      fontSize: 20,
-                    )),
-              ),
-            ),
+            ...List.generate(colorBoxes.length, (index) => colorBoxes[index]),
+            changeThemeButton(context),
           ],
         ));
+  }
+
+  Center changeThemeButton(BuildContext context) {
+    return Center(
+      child: TextButton(
+        onPressed: () {
+          _appCubit.changeAppTheme();
+        },
+        child: Text('CLICK ME NOW ${F.title}',
+            style: TextStyle(
+              color: Theme.of(context).primaryTextTheme.displayLarge?.color,
+              fontSize: 20,
+            )),
+      ),
+    );
   }
 }
