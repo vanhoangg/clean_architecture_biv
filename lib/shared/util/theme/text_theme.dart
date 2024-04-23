@@ -5,7 +5,7 @@ class AppTextTheme {
     displayLarge: TextStyle(
       color: Color(0xFF201A19),
       fontWeight: FontWeight.w600,
-      fontSize: 57,
+      fontSize: 36,
       letterSpacing: 0,
     ),
     displayMedium: TextStyle(

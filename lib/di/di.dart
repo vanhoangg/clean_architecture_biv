@@ -1,4 +1,6 @@
 import 'package:clean_architecture_biv/presentation/app/app_bloc/cubit/app_cubit.dart';
+import 'package:clean_architecture_biv/shared/shared.dart';
+import 'package:clean_architecture_biv/shared/util/widget/widget_util.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -53,7 +55,11 @@ Future<void> initializeDependencies() async {
           di<NoneAuthAppServerApiClient>(),
         ))
     ..registerFactory<CustomLogInterceptor>(() => CustomLogInterceptor())
-    ..registerLazySingleton<AppCubit>(() => AppCubit());
+    ..registerLazySingleton<AppCubit>(() => AppCubit())
+    ..registerLazySingleton<WidgetUtil>(() => WidgetUtil())
+    ..registerLazySingleton<AppRoute>(
+      () => AppRoute(),
+    );
 
   // await DomainConfig.getInstance().init();
   // await _applicationConfig.init();

@@ -1,12 +1,9 @@
 import 'package:clean_architecture_biv/shared/shared.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../di/di.dart';
 import '../../flavors.dart';
-import '../features/my_home_page.dart';
-import 'app_bloc/cubit/app_cubit.dart';
+import 'package:clean_architecture_biv/presentation/features/base/base_stateful_widget.dart';
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -15,32 +12,37 @@ class App extends StatefulWidget {
   State<App> createState() => _AppState();
 }
 
-class _AppState extends State<App> {
-  final AppCubit _appCubit = di();
+class _AppState extends BaseState<App> with WidgetsBindingObserver {
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.inactive ||
+        state == AppLifecycleState.paused) {
+      Log.d('AppLifecycleState: $state');
+      widgetUtil.closeGlobalKeyboard();
+    }
+
+    super.didChangeAppLifecycleState(state);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => _appCubit,
-      child: BlocConsumer<AppCubit, AppState>(
-        listener: (context, state) {},
-        builder: (context, state) {
-          Log.d(state.toString());
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            debugShowMaterialGrid: false,
-            title: F.title,
-            themeMode: ThemeMode.system,
-            theme: (state.isDarkTheme ?? false)
-                ? AppTheme.darkTheme
-                : AppTheme.lightTheme,
-            home: _flavorBanner(
-              child: const MyHomePage(),
-              show: kDebugMode,
-            ),
-          );
-        },
-      ),
+    return AppTheme(
+      child: Builder(builder: (context) {
+        return MaterialApp.router(
+          routerConfig: di<AppRoute>().generateRoute(),
+          debugShowCheckedModeBanner: false,
+          debugShowMaterialGrid: false,
+          title: F.title,
+          the
+          theme: ThemeData(
+              brightness: AppTheme.of(context).themeData.brightness,
+              textTheme: AppTheme.of(context).themeData.textTheme,
+              fontFamily: 'Quicksand',
+              useMaterial3: true,
+              colorScheme: AppTheme.of(context).themeData.color,
+              primaryTextTheme: AppTheme.of(context).themeData.textTheme),
+        );
+      }),
     );
   }
 

@@ -1,75 +1,69 @@
-// import 'package:flutter/material.dart';
-// import 'package:tellme_flutter/app/route/route.dart';
-// import 'package:tellme_flutter/design_system/ds_error_indicator.dart';
-// import 'package:tellme_flutter/design_system/ds_loading_indicator.dart';
-// import 'package:injectable/injectable.dart';
-// import 'package:is_first_run/is_first_run.dart';
-// import 'package:overlay_support/overlay_support.dart';
-// import 'package:tellme_flutter/design_system/ds_primary_button.dart';
-// import 'package:tellme_flutter/design_system/ds_theme.dart';
+import 'package:flutter/material.dart';
 
-// OverlaySupportEntry? _loadingOverlayEntry;
+import 'package:overlay_support/overlay_support.dart';
 
-// @lazySingleton
-// class WidgetUtil {
-//   void showGlobalLoadingOverlay() {
-//     dismissGlobalLoadingOverlay();
-//     _loadingOverlayEntry = showOverlay((_, __) => const DSLoadingIndicator(),
-//         duration: const Duration(hours: 100));
-//   }
+import '../../shared.dart';
 
-//   void dismissGlobalLoadingOverlay() {
-//     _loadingOverlayEntry?.dismiss(animate: false);
-//   }
+OverlaySupportEntry? _loadingOverlayEntry;
 
-//   void closeGlobalKeyboard({BuildContext? context}) {
-//     if (context != null) {
-//       FocusScope.of(context).unfocus();
-//       return;
-//     }
-//     FocusScope.of(navigatorKey.currentContext!).requestFocus(FocusNode());
-//   }
+class WidgetUtil {
+  void showGlobalLoadingOverlay() {
+    dismissGlobalLoadingOverlay();
+    _loadingOverlayEntry = showOverlay(
+        (_, __) => const CircularProgressIndicator(),
+        duration: const Duration(hours: 100));
+  }
 
-//   bool checkLandscape(BuildContext context) =>
-//       MediaQuery.of(context).orientation == Orientation.landscape;
+  void dismissGlobalLoadingOverlay() {
+    _loadingOverlayEntry?.dismiss(animate: false);
+  }
 
-//   bool checkKeyboardOpening(BuildContext context) =>
-//       MediaQuery.of(context).viewInsets.bottom != 0;
+  void closeGlobalKeyboard({BuildContext? context}) {
+    if (context != null) {
+      FocusScope.of(context).unfocus();
+      return;
+    }
+    FocusScope.of(navigatorKey.currentContext!).requestFocus(FocusNode());
+  }
 
-//   Future<dynamic> showCenterDialog(
-//       {required BuildContext context,
-//       required Widget child,
-//       bool barrierDismissible = true}) {
-//     return showDialog(
-//         context: context,
-//         barrierDismissible: barrierDismissible,
-//         builder: (_) => Column(
-//               mainAxisAlignment: MainAxisAlignment.center,
-//               children: [
-//                 child,
-//               ],
-//             ),
-//         useRootNavigator: true);
-//   }
+  bool checkLandscape(BuildContext context) =>
+      MediaQuery.of(context).orientation == Orientation.landscape;
 
-//   Future<dynamic> showFullScreenDialog(
-//       {required BuildContext context, required Widget child}) {
-//     return showDialog(
-//         context: context, builder: (_) => child, useRootNavigator: true);
-//   }
+  bool checkKeyboardOpening(BuildContext context) =>
+      MediaQuery.of(context).viewInsets.bottom != 0;
 
-//   bool hasPaddingBottom(BuildContext context) =>
-//       MediaQuery.of(context).padding.bottom != 0;
+  Future<dynamic> showCenterDialog(
+      {required BuildContext context,
+      required Widget child,
+      bool barrierDismissible = true}) {
+    return showDialog(
+        context: context,
+        barrierDismissible: barrierDismissible,
+        builder: (_) => Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                child,
+              ],
+            ),
+        useRootNavigator: true);
+  }
 
-//   Future<bool> isFirstRun() => IsFirstRun.isFirstRun();
+  Future<dynamic> showFullScreenDialog(
+      {required BuildContext context, required Widget child}) {
+    return showDialog(
+        context: context, builder: (_) => child, useRootNavigator: true);
+  }
 
-//   double getPaddingBottom(BuildContext context) {
-//     if (hasPaddingBottom(context)) {
-//       return 32;
-//     }
+  bool hasPaddingBottom(BuildContext context) =>
+      MediaQuery.of(context).padding.bottom != 0;
 
-//     return 16;
-//   }
+  double getPaddingBottom(BuildContext context) {
+    if (hasPaddingBottom(context)) {
+      return 32;
+    }
+
+    return 16;
+  }
 
 //   static void showConfirmDialog(
 //       {required BuildContext context,
@@ -272,4 +266,4 @@
 //       );
 //     }
 //   }
-// }
+}
