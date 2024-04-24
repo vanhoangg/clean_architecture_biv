@@ -2,12 +2,10 @@ import 'package:clean_architecture_biv/shared/shared.dart';
 
 import 'package:flutter/material.dart';
 
-abstract class AppThemeData {
+sealed class AppThemeData {
   LinearGradient get purpleLinear;
   LinearGradient get logoLinear;
-  Brightness get brightness;
-  ColorScheme get color;
-  TextTheme get textTheme;
+  ThemeData get theme;
   // Color? get canvasColor;
   // Color? get cardColor;
   // ColorScheme? get colorScheme;
@@ -32,10 +30,6 @@ abstract class AppThemeData {
 }
 
 class AppThemeLight extends AppThemeData {
-  // Light theme
-
-  @override
-  Brightness get brightness => Brightness.light;
   @override
   LinearGradient get purpleLinear => const LinearGradient(
       begin: Alignment(-1.00, 0.01),
@@ -47,16 +41,18 @@ class AppThemeLight extends AppThemeData {
         end: Alignment(1, -0.01),
         colors: [Color(0xFF983BCB), Color(0xFF4023D7)],
       );
-  @override
-  ColorScheme get color => DColorSheme.lightColorScheme;
 
   @override
-  TextTheme get textTheme => AppTextTheme.lightTextTheme;
+  ThemeData get theme => ThemeData(
+        brightness: Brightness.light,
+        textTheme: AppTextTheme.lightTextTheme,
+        fontFamily: 'Quicksand',
+        useMaterial3: true,
+        colorScheme: DColorSheme.lightColorScheme,
+      );
 }
 
 class AppThemeDark extends AppThemeData {
-  @override
-  Brightness get brightness => Brightness.dark;
   @override
   LinearGradient get purpleLinear => const LinearGradient(
         begin: Alignment(-1.00, 0.01),
@@ -69,11 +65,15 @@ class AppThemeDark extends AppThemeData {
         end: Alignment(1, -0.01),
         colors: [Color(0xFF9C22D6), Color(0xFF9F2E6E)],
       );
-  @override
-  ColorScheme get color => DColorSheme.darkColorScheme;
 
   @override
-  TextTheme get textTheme => AppTextTheme.darkTextTheme;
+  ThemeData get theme => ThemeData(
+        brightness: Brightness.light,
+        textTheme: AppTextTheme.darkTextTheme,
+        fontFamily: 'Quicksand',
+        useMaterial3: true,
+        colorScheme: DColorSheme.darkColorScheme,
+      );
 }
 
 // ignore: must_be_immutable
@@ -84,13 +84,6 @@ class AppTheme extends InheritedWidget {
   bool _isLightTheme = true;
   bool get isLightTheme => _isLightTheme;
   AppThemeData get themeData => _themeData;
-  ThemeData get theme => ThemeData(
-      brightness: _themeData.brightness,
-      textTheme: _themeData.textTheme,
-      fontFamily: 'Quicksand',
-      useMaterial3: true,
-      colorScheme: _themeData.color,
-      primaryTextTheme: _themeData.textTheme);
 
   final AppThemeData darkThemeData = AppThemeDark();
   final AppThemeData lightThemeData = AppThemeLight();

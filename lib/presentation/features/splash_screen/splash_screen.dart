@@ -1,7 +1,9 @@
 import 'package:clean_architecture_biv/presentation/features/base/base_stateful_widget.dart';
 import 'package:clean_architecture_biv/shared/util/theme/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:go_router/go_router.dart';
+
+import '../../../shared/shared.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -15,10 +17,10 @@ class _SplashScreenState extends BaseState<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: AnimatedContainer(
-            duration: const Duration(seconds: 2),
-            color: Colors.blue,
-            child: Center(
-                child: Column(
+          duration: const Duration(seconds: 2),
+          color: Colors.blue,
+          child: Center(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -26,14 +28,28 @@ class _SplashScreenState extends BaseState<SplashScreen> {
                     text: TextSpan(children: [
                   TextSpan(
                       text: 'DIDPO OL',
-                      style:
-                          AppTheme.of(context).themeData.textTheme.bodyLarge),
+                      style: AppTheme.of(context)
+                          .themeData
+                          .theme
+                          .textTheme
+                          .bodyLarge),
                   TextSpan(
                       text: 'FIT',
-                      style:
-                          AppTheme.of(context).themeData.textTheme.bodyLarge),
+                      style: AppTheme.of(context)
+                          .themeData
+                          .theme
+                          .textTheme
+                          .bodyLarge),
                 ]))
               ],
-            ))));
+            ),
+          ),
+        ),
+        bottomNavigationBar: ElevatedButton(
+          onPressed: () {
+            context.go(ScreenName.root + ScreenName.home);
+          },
+          child: const Text('Go to Home'),
+        ));
   }
 }

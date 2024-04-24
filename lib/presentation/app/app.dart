@@ -25,44 +25,31 @@ class _AppState extends BaseState<App> with WidgetsBindingObserver {
   }
 
   @override
+  void didChangePlatformBrightness() {
+    AppTheme.of(context).toggleTheme();
+    super.didChangePlatformBrightness();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return AppTheme(
       child: Builder(builder: (context) {
         return MaterialApp.router(
-          routerConfig: di<AppRoute>().generateRoute(),
-          debugShowCheckedModeBanner: false,
-          debugShowMaterialGrid: false,
-          title: F.title,
-          the
-          theme: ThemeData(
-              brightness: AppTheme.of(context).themeData.brightness,
-              textTheme: AppTheme.of(context).themeData.textTheme,
-              fontFamily: 'Quicksand',
-              useMaterial3: true,
-              colorScheme: AppTheme.of(context).themeData.color,
-              primaryTextTheme: AppTheme.of(context).themeData.textTheme),
-        );
+            routerConfig: di<AppRoute>().generateRoute(),
+            debugShowCheckedModeBanner: false,
+            debugShowMaterialGrid: false,
+            title: F.title,
+            themeMode: ThemeMode.system,
+            theme: AppTheme.of(context).themeData.theme
+            // ThemeData(
+            //     brightness: AppTheme.of(context).themeData.brightness,
+            //     textTheme: AppTheme.of(context).themeData.textTheme,
+            //     fontFamily: 'Quicksand',
+            //     useMaterial3: true,
+            //     colorScheme: AppTheme.of(context).themeData.color,
+            //     primaryTextTheme: AppTheme.of(context).themeData.textTheme),
+            );
       }),
     );
   }
-
-  Widget _flavorBanner({
-    required Widget child,
-    bool show = true,
-  }) =>
-      show
-          ? Banner(
-              location: BannerLocation.topStart,
-              message: F.name,
-              color: Colors.green.withOpacity(0.6),
-              textStyle: const TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 12.0,
-                  letterSpacing: 1.0),
-              textDirection: TextDirection.ltr,
-              child: child,
-            )
-          : Container(
-              child: child,
-            );
 }
