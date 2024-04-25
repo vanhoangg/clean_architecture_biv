@@ -44,9 +44,7 @@ class AppThemeLight extends AppThemeData {
 
   @override
   ThemeData get theme => ThemeData(
-        brightness: Brightness.light,
-        textTheme: AppTextTheme.lightTextTheme,
-        fontFamily: 'Quicksand',
+        textTheme: AppTextStyle.lightTextTheme,
         useMaterial3: true,
         colorScheme: DColorSheme.lightColorScheme,
       );
@@ -68,9 +66,7 @@ class AppThemeDark extends AppThemeData {
 
   @override
   ThemeData get theme => ThemeData(
-        brightness: Brightness.light,
-        textTheme: AppTextTheme.darkTextTheme,
-        fontFamily: 'Quicksand',
+        textTheme: AppTextStyle.darkTextTheme,
         useMaterial3: true,
         colorScheme: DColorSheme.darkColorScheme,
       );

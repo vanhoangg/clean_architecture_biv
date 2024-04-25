@@ -1,8 +1,14 @@
 import 'package:clean_architecture_biv/shared/shared.dart';
+import 'package:dartx/dartx.dart';
+import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import '../../../flavors.dart';
+
+enum TypeOfList { listView, gridView }
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -12,65 +18,11 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int numberOfSection = 2;
+  TypeOfList type = TypeOfList.gridView;
+
   @override
   Widget build(BuildContext context) {
-    // List<Widget> colorBoxes = [
-    // ColoredBox(
-    //   color: AppTheme.of(context).themeData.theme.colorScheme.secondary,
-    //   child: const Text('colorScheme.secondary'),
-    // ),
-    //   ColoredBox(
-    //     color: AppTheme.of(context).themeData.theme.colorScheme.background,
-    //     child: const Text('colorScheme.background'),
-    //   ),
-    //   ColoredBox(
-    //     color: AppTheme.of(context).themeData.theme.scaffoldBackgroundColor,
-    //     child: const Text('scaffoldBackgroundColor'),
-    //   ),
-    //   ColoredBox(
-    //     color: AppTheme.of(context).themeData.theme.cardColor,
-    //     child: const Text('cardColor'),
-    //   ),
-    //   ColoredBox(
-    //     color: AppTheme.of(context).themeData.theme.dividerColor,
-    //     child: const Text('dividerColor'),
-    //   ),
-    //   ColoredBox(
-    //     color: AppTheme.of(context).themeData.theme.focusColor,
-    //     child: const Text('focusColor'),
-    //   ),
-    //   ColoredBox(
-    //     color: AppTheme.of(context).themeData.theme.hoverColor,
-    //     child: const Text('hoverColor'),
-    //   ),
-    //   ColoredBox(
-    //     color: AppTheme.of(context).themeData.theme.highlightColor,
-    //     child: const Text('highlightColor'),
-    //   ),
-    //   ColoredBox(
-    //     color: AppTheme.of(context).themeData.theme.splashColor,
-    //     child: const Text('splashColor'),
-    //   ),
-    //   ColoredBox(
-    //     color: AppTheme.of(context).themeData.theme.unselectedWidgetColor,
-    //     child: const Text('unselectedWidgetColor'),
-    //   ),
-    //   ColoredBox(
-    //     color: AppTheme.of(context).themeData.theme.disabledColor,
-    //     child: const Text('disabledColor'),
-    //   ),
-    //   ColoredBox(
-    //     color: AppTheme.of(context).themeData.theme.secondaryHeaderColor,
-    //     child: const Text('secondaryHeaderColor'),
-    //   ),
-    //   ColoredBox(
-    //     color: AppTheme.of(context).themeData.theme.dialogBackgroundColor,
-    //     child: const Text('dialogBackgroundColor'),
-    //   ),
-    // ];
-    // AppTheme.of(context).themeData.theme.primaryTextTheme
-
-    // AppTheme.of(context).themeData.theme.textTheme
     List<TextStyle?> textThemeStyles = [
       AppTheme.of(context).themeData.theme.textTheme.displayLarge,
       AppTheme.of(context).themeData.theme.textTheme.displayMedium,
@@ -86,7 +38,6 @@ class _HomeScreenState extends State<HomeScreen> {
       AppTheme.of(context).themeData.theme.textTheme.labelLarge,
       AppTheme.of(context).themeData.theme.textTheme.labelSmall,
     ];
-    // AppTheme.of(context).themeData.theme.
     Map<String, Color> themeColors = {
       'primary': AppTheme.of(context).themeData.theme.colorScheme.primary,
       'secondary': AppTheme.of(context).themeData.theme.colorScheme.secondary,
@@ -113,80 +64,123 @@ class _HomeScreenState extends State<HomeScreen> {
       'dialogBackgroundColor':
           AppTheme.of(context).themeData.theme.dialogBackgroundColor,
     };
-    // Log.d AppTheme
-    const int numberOfSection = 2;
-    final int numberOfItem = textThemeStyles.length + themeColors.length;
+
     return AnimatedContainer(
         duration: const Duration(milliseconds: 500),
         color: AppTheme.of(context).themeData.theme.colorScheme.background,
         child: Scaffold(
             backgroundColor: Colors.transparent,
-            body: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: numberOfSection, // Number of items in a row
-                crossAxisSpacing: 10, // Spacing between items horizontally
-                mainAxisSpacing: 10, // Spacing between items vertically
-                childAspectRatio: 5, // Aspect ratio
-              ),
-              itemCount: numberOfItem, // Replace with your number of items
-              itemBuilder: (context, index) {
-                final int rowIndex = index % numberOfSection;
-
-                switch (rowIndex) {
-                  case 0:
-                    final textThemeStylesIndex = index ~/ numberOfSection;
-                    if (textThemeStylesIndex > textThemeStyles.length - 1) {
-                      return Container();
-                    }
-                    final value = textThemeStyles[index ~/ numberOfSection];
-                    final text = value?.debugLabel
-                        ?.replaceAll(").apply).apply).merge(unknown)", "")
-                        .split(' ')
-                        .last;
-                    return Text(text ?? "", style: value);
-                  case 1:
-                    final themeColorsIndex = index ~/ numberOfSection;
-                    if (themeColorsIndex > themeColors.length - 1) {
-                      return Container();
-                    }
-                    final key = themeColors.keys.elementAt(themeColorsIndex);
-                    return Column(
-                      children: [
-                        Text(key),
-                        Expanded(
-                          child: ColoredBox(
-                            color: themeColors[key] ?? Colors.black,
-                            child: Container(),
-                          ),
+            body: SafeArea(
+              child: CustomScrollView(
+                shrinkWrap: true,
+                slivers: [
+                  SliverList(
+                    delegate: SliverChildListDelegate([
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          'Theme: ${F.title}',
+                          style: AppTheme.of(context)
+                              .themeData
+                              .theme
+                              .textTheme
+                              .displayLarge,
                         ),
-                      ],
-                    );
-                  default:
-                    return const Text('Unknown');
-                }
-              },
+                      ),
+                      changeThemeButton(context,
+                          title: "ListView",
+                          onPressed: () => setState(() {
+                                type = type == TypeOfList.listView
+                                    ? TypeOfList.gridView
+                                    : TypeOfList.listView;
+                              })),
+                      changeThemeButton(context,
+                          title: "DarkMode",
+                          onPressed: () => setState(() {
+                                AppTheme.of(context).toggleTheme();
+                              })),
+                      changeThemeButton(context,
+                          title: "+1 Row",
+                          onPressed: () => setState(() {
+                                if (type == TypeOfList.listView) {
+                                  textThemeStyles.append(textThemeStyles);
+                                  themeColors.addAll(themeColors);
+                                } else {
+                                  numberOfSection++;
+                                }
+                              })),
+                    ]),
+                  ),
+                  SliverAlignedGrid.count(
+                      mainAxisSpacing: 10.0,
+                      crossAxisSpacing: 10.0,
+                      crossAxisCount:
+                          type == TypeOfList.listView ? 1 : numberOfSection,
+                      itemCount: textThemeStyles.length + themeColors.length,
+                      itemBuilder: (context, index) {
+                        final int rowIndex = index % 2;
+                        Log.d('rowIndex: $rowIndex');
+                        switch (rowIndex) {
+                          case 0:
+                            final textThemeStylesIndex = index ~/ 2;
+                            if (textThemeStylesIndex >
+                                textThemeStyles.length - 1) {
+                              return Container();
+                            }
+                            final value = textThemeStyles[index ~/ 2];
+                            final text = value?.debugLabel
+                                ?.replaceAll(
+                                    ").apply).apply).merge(unknown)", "")
+                                .split(' ')
+                                .last
+                                .split(')')
+                                .first;
+                            return Text(text ?? "", style: value);
+                          case 1:
+                            final themeColorsIndex = index ~/ 2;
+                            Log.d('themeColorsIndex: $themeColorsIndex');
+                            if (themeColorsIndex > themeColors.length - 1) {
+                              return Container();
+                            }
+                            final key =
+                                themeColors.keys.elementAt(themeColorsIndex);
+                            final value =
+                                themeColors.values.elementAt(themeColorsIndex);
+                            return Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(key),
+                                ColoredBox(
+                                  color: value,
+                                  child: Container(
+                                    height: 50,
+                                  ),
+                                ),
+                              ],
+                            );
+                          default:
+                            return const Text('Unknown');
+                        }
+                      }),
+                ],
+              ),
             )));
   }
 
-  Center changeThemeButton(BuildContext context) {
-    return Center(
-      child: TextButton(
-        onPressed: () {
-          setState(() {
-            AppTheme.of(context).toggleTheme();
-          });
-        },
-        child: Text('CLICK ME NOW ${F.title}',
-            style: TextStyle(
-              color: AppTheme.of(context)
-                  .themeData
-                  .theme
-                  .primaryTextTheme
-                  .displayLarge
-                  ?.color,
-              fontSize: 20,
-            )),
-      ),
+  Widget changeThemeButton(BuildContext context,
+      {String? title, Function()? onPressed}) {
+    return TextButton(
+      onPressed: () => onPressed?.call(),
+      child: Text('CLICK ME NOW $title',
+          style: TextStyle(
+            color: AppTheme.of(context)
+                .themeData
+                .theme
+                .primaryTextTheme
+                .displayLarge
+                ?.color,
+            fontSize: 20,
+          )),
     );
   }
 }

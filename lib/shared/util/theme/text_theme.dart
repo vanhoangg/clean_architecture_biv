@@ -1,186 +1,187 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class AppTextTheme {
-  static TextTheme lightTextTheme = const TextTheme(
-    displayLarge: TextStyle(
-      color: Color(0xFF201A19),
+class AppTextStyle {
+  static TextTheme lightTextTheme = TextTheme(
+    displayLarge: GoogleFonts.poppins(
+      color: const Color(0xFF201A19),
       fontWeight: FontWeight.w600,
       fontSize: 36,
       letterSpacing: 0,
     ),
-    displayMedium: TextStyle(
-      color: Color(0xFF201A19),
+    displayMedium: GoogleFonts.poppins(
+      color: const Color(0xFF201A19),
       fontWeight: FontWeight.w500,
       fontSize: 45,
       letterSpacing: 0,
     ),
-    displaySmall: TextStyle(
-      color: Color(0xFF201A19),
+    displaySmall: GoogleFonts.poppins(
+      color: const Color(0xFF201A19),
       fontWeight: FontWeight.w400,
       fontSize: 36,
       letterSpacing: 0,
     ),
-    headlineLarge: TextStyle(
-      color: Color(0xFF201A19),
+    headlineLarge: GoogleFonts.poppins(
+      color: const Color(0xFF201A19),
       fontWeight: FontWeight.w600,
       fontSize: 32,
       letterSpacing: 0,
     ),
-    headlineMedium: TextStyle(
-      color: Color(0xFF201A19),
+    headlineMedium: GoogleFonts.poppins(
+      color: const Color(0xFF201A19),
       fontWeight: FontWeight.w500,
       fontSize: 28,
       letterSpacing: 0,
     ),
-    headlineSmall: TextStyle(
-      color: Color(0xFF201A19),
+    headlineSmall: GoogleFonts.poppins(
+      color: const Color(0xFF201A19),
       fontWeight: FontWeight.w400,
       fontSize: 24,
       letterSpacing: 0,
     ),
-    titleLarge: TextStyle(
-      color: Color(0xFF201A19),
+    titleLarge: GoogleFonts.poppins(
+      color: const Color(0xFF201A19),
       fontWeight: FontWeight.w600,
       fontSize: 22,
       letterSpacing: 0,
     ),
-    titleMedium: TextStyle(
-      color: Color(0xFF201A19),
+    titleMedium: GoogleFonts.poppins(
+      color: const Color(0xFF201A19),
       fontWeight: FontWeight.w500,
       fontSize: 18,
       letterSpacing: 0,
     ),
-    titleSmall: TextStyle(
-      color: Color(0xFF201A19),
+    titleSmall: GoogleFonts.poppins(
+      color: const Color(0xFF201A19),
       fontWeight: FontWeight.w400,
       fontSize: 14,
       letterSpacing: 0,
     ),
-    bodyLarge: TextStyle(
-      color: Color(0xFF201A19),
+    bodyLarge: GoogleFonts.poppins(
+      color: const Color(0xFF201A19),
       fontWeight: FontWeight.w600,
       fontSize: 16,
       letterSpacing: 0,
     ),
-    bodyMedium: TextStyle(
-      color: Color(0xFF201A19),
+    bodyMedium: GoogleFonts.poppins(
+      color: const Color(0xFF201A19),
       fontWeight: FontWeight.w500,
       fontSize: 14,
       letterSpacing: 0,
     ),
-    bodySmall: TextStyle(
-      color: Color(0xFF201A19),
+    bodySmall: GoogleFonts.poppins(
+      color: const Color(0xFF201A19),
       fontWeight: FontWeight.w400,
       fontSize: 12,
       letterSpacing: 0,
     ),
-    labelLarge: TextStyle(
-      color: Color(0xFF201A19),
+    labelLarge: GoogleFonts.poppins(
+      color: const Color(0xFF201A19),
       fontWeight: FontWeight.w600,
       fontSize: 14,
       letterSpacing: 0,
     ),
-    labelMedium: TextStyle(
-      color: Color(0xFF201A19),
+    labelMedium: GoogleFonts.poppins(
+      color: const Color(0xFF201A19),
       fontWeight: FontWeight.w500,
       fontSize: 12,
       letterSpacing: 0,
     ),
-    labelSmall: TextStyle(
-      color: Color(0xFF201A19),
+    labelSmall: GoogleFonts.poppins(
+      color: const Color(0xFF201A19),
       fontWeight: FontWeight.w400,
       fontSize: 11,
       letterSpacing: 0,
     ),
   );
 
-  static TextTheme darkTextTheme = const TextTheme(
-    displayLarge: TextStyle(
-      color: Color(0xFFFFFFFF),
+  static TextTheme darkTextTheme = TextTheme(
+    displayLarge: GoogleFonts.poppins(
+      color: const Color(0xFFFFFFFF),
       fontWeight: FontWeight.w600,
       fontSize: 57,
       letterSpacing: 0,
     ),
-    displayMedium: TextStyle(
-      color: Color(0xFFFFFFFF),
+    displayMedium: GoogleFonts.poppins(
+      color: const Color(0xFFFFFFFF),
       fontWeight: FontWeight.w500,
       fontSize: 45,
       letterSpacing: 0,
     ),
-    displaySmall: TextStyle(
-      color: Color(0xFFFFFFFF),
+    displaySmall: GoogleFonts.poppins(
+      color: const Color(0xFFFFFFFF),
       fontWeight: FontWeight.w400,
       fontSize: 36,
       letterSpacing: 0,
     ),
-    headlineLarge: TextStyle(
-      color: Color(0xFFFFFFFF),
+    headlineLarge: GoogleFonts.poppins(
+      color: const Color(0xFFFFFFFF),
       fontWeight: FontWeight.w600,
       fontSize: 32,
       letterSpacing: 0,
     ),
-    headlineMedium: TextStyle(
-      color: Color(0xFFFFFFFF),
+    headlineMedium: GoogleFonts.poppins(
+      color: const Color(0xFFFFFFFF),
       fontWeight: FontWeight.w500,
       fontSize: 28,
       letterSpacing: 0,
     ),
-    headlineSmall: TextStyle(
-      color: Color(0xFFFFFFFF),
+    headlineSmall: GoogleFonts.poppins(
+      color: const Color(0xFFFFFFFF),
       fontWeight: FontWeight.w400,
       fontSize: 24,
       letterSpacing: 0,
     ),
-    titleLarge: TextStyle(
-      color: Color(0xFFFFFFFF),
+    titleLarge: GoogleFonts.poppins(
+      color: const Color(0xFFFFFFFF),
       fontWeight: FontWeight.w600,
       fontSize: 22,
       letterSpacing: 0,
     ),
-    titleMedium: TextStyle(
-      color: Color(0xFFFFFFFF),
+    titleMedium: GoogleFonts.poppins(
+      color: const Color(0xFFFFFFFF),
       fontWeight: FontWeight.w500,
       fontSize: 18,
       letterSpacing: 0,
     ),
-    titleSmall: TextStyle(
-      color: Color(0xFFFFFFFF),
+    titleSmall: GoogleFonts.poppins(
+      color: const Color(0xFFFFFFFF),
       fontWeight: FontWeight.w400,
       fontSize: 14,
       letterSpacing: 0,
     ),
-    bodyLarge: TextStyle(
-      color: Color(0xFFFFFFFF),
+    bodyLarge: GoogleFonts.poppins(
+      color: const Color(0xFFFFFFFF),
       fontWeight: FontWeight.w600,
       fontSize: 16,
       letterSpacing: 0,
     ),
-    bodyMedium: TextStyle(
-      color: Color(0xFFFFFFFF),
+    bodyMedium: GoogleFonts.poppins(
+      color: const Color(0xFFFFFFFF),
       fontWeight: FontWeight.w500,
       fontSize: 14,
       letterSpacing: 0,
     ),
-    bodySmall: TextStyle(
-      color: Color(0xFFFFFFFF),
+    bodySmall: GoogleFonts.poppins(
+      color: const Color(0xFFFFFFFF),
       fontWeight: FontWeight.w400,
       fontSize: 12,
       letterSpacing: 0,
     ),
-    labelLarge: TextStyle(
-      color: Color(0xFFFFFFFF),
+    labelLarge: GoogleFonts.poppins(
+      color: const Color(0xFFFFFFFF),
       fontWeight: FontWeight.w600,
       fontSize: 14,
       letterSpacing: 0,
     ),
-    labelMedium: TextStyle(
-      color: Color(0xFFFFFFFF),
+    labelMedium: GoogleFonts.poppins(
+      color: const Color(0xFFFFFFFF),
       fontWeight: FontWeight.w500,
       fontSize: 12,
       letterSpacing: 0,
     ),
-    labelSmall: TextStyle(
-      color: Color(0xFFFFFFFF),
+    labelSmall: GoogleFonts.poppins(
+      color: const Color(0xFFFFFFFF),
       fontWeight: FontWeight.w400,
       fontSize: 11,
       letterSpacing: 0,

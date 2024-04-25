@@ -26,7 +26,9 @@ class _AppState extends BaseState<App> with WidgetsBindingObserver {
 
   @override
   void didChangePlatformBrightness() {
-    AppTheme.of(context).toggleTheme();
+    setState(() {
+      AppTheme.of(context).toggleTheme();
+    });
     super.didChangePlatformBrightness();
   }
 
@@ -35,20 +37,21 @@ class _AppState extends BaseState<App> with WidgetsBindingObserver {
     return AppTheme(
       child: Builder(builder: (context) {
         return MaterialApp.router(
-            routerConfig: di<AppRoute>().generateRoute(),
-            debugShowCheckedModeBanner: false,
-            debugShowMaterialGrid: false,
-            title: F.title,
-            themeMode: ThemeMode.system,
-            theme: AppTheme.of(context).themeData.theme
-            // ThemeData(
-            //     brightness: AppTheme.of(context).themeData.brightness,
-            //     textTheme: AppTheme.of(context).themeData.textTheme,
-            //     fontFamily: 'Quicksand',
-            //     useMaterial3: true,
-            //     colorScheme: AppTheme.of(context).themeData.color,
-            //     primaryTextTheme: AppTheme.of(context).themeData.textTheme),
-            );
+          routerConfig: di<AppRoute>().generateRoute(),
+          debugShowCheckedModeBanner: false,
+          debugShowMaterialGrid: false,
+          title: F.title,
+          themeMode: ThemeMode.system,
+          theme: AppTheme.of(context).lightThemeData.theme,
+          darkTheme: AppTheme.of(context).darkThemeData.theme,
+          // ThemeData(
+          //     brightness: AppTheme.of(context).themeData.brightness,
+          //     textTheme: AppTheme.of(context).themeData.textTheme,
+          //     fontFamily: 'Quicksand',
+          //     useMaterial3: true,
+          //     colorScheme: AppTheme.of(context).themeData.color,
+          //     primaryTextTheme: AppTheme.of(context).themeData.textTheme),
+        );
       }),
     );
   }
