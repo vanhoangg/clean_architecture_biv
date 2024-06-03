@@ -1,6 +1,6 @@
 import 'package:clean_architecture_biv/presentation/app/app_bloc/cubit/app_cubit.dart';
 import 'package:clean_architecture_biv/shared/shared.dart';
-import 'package:clean_architecture_biv/shared/util/widget/widget_util.dart';
+
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -8,7 +8,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../data/datasource/datasource.dart';
 
 import '../data/datasource/remote/services/authentication/auth_api_services.dart';
-import '../shared/helper/helper.dart';
 
 final di = GetIt.asNewInstance()..allowReassignment = true;
 
@@ -18,19 +17,19 @@ Future<void> initializeDependencies() async {
 
   di
     ..registerLazySingleton<AppInfo>(() => AppInfo())
-    ..registerFactory<HeaderInterceptor>(() => HeaderInterceptor(di<AppInfo>()))
-    ..registerLazySingleton<NoneAuthAppServerApiClient>(
-        () => NoneAuthAppServerApiClient(di<HeaderInterceptor>()))
-    ..registerFactory<RefreshTokenInterceptor>(() => RefreshTokenInterceptor(
-          di<UserLocalDataSource>(),
-          di<RefreshTokenApiService>(),
-          di<NoneAuthAppServerApiClient>(),
-        ))
-    ..registerFactory<SharedPreferences>(() => sharedPreferences)
-    ..registerFactory<FlutterSecureStorage>(() => const FlutterSecureStorage())
-    ..registerLazySingleton<UserLocalDataSource>(() =>
-        UserLocalDatasourceImplement(
-            di<FlutterSecureStorage>(), di<SharedPreferences>()))
+    // ..registerFactory<HeaderInterceptor>(() => HeaderInterceptor(di<AppInfo>()))
+    // ..registerLazySingleton<NoneAuthAppServerApiClient>(
+    //     () => NoneAuthAppServerApiClient(di<HeaderInterceptor>()))
+    // ..registerFactory<RefreshTokenInterceptor>(() => RefreshTokenInterceptor(
+    //       di<UserLocalDataSource>(),
+    //       di<RefreshTokenApiService>(),
+    //       di<NoneAuthAppServerApiClient>(),
+    //     ))
+    // ..registerFactory<SharedPreferences>(() => sharedPreferences)
+    // ..registerFactory<FlutterSecureStorage>(() => const FlutterSecureStorage())
+    // ..registerLazySingleton<UserLocalDataSource>(() =>
+    //     UserLocalDatasourceImplement(
+    //         di<FlutterSecureStorage>(), di<SharedPreferences>()))
     // ..registerFactory<AccessTokenInterceptor>(
     //     () => AccessTokenInterceptor(di<UserLocalDataSource>()))
     // ..registerLazySingleton<RefreshTokenApiClient>(() => RefreshTokenApiClient(
@@ -40,20 +39,20 @@ Future<void> initializeDependencies() async {
     // ..registerLazySingleton<AuthAppServerApiClient>(() =>
     //     AuthAppServerApiClient(di<HeaderInterceptor>(),
     //         di<AccessTokenInterceptor>(), di<RefreshTokenInterceptor>()))
-    ..registerLazySingleton<AuthApiServices>(
-        () => AuthApiServices(di<UserLocalDataSource>()))
-    ..registerFactory<FirebaseStorageErrorResponseMapper>(
-        () => FirebaseStorageErrorResponseMapper())
-    ..registerFactory<JsonArrayErrorResponseMapper>(
-        () => JsonArrayErrorResponseMapper())
-    ..registerFactory<AccessTokenInterceptor>(
-        () => AccessTokenInterceptor(di<UserLocalDataSource>()))
-    ..registerFactory<HeaderInterceptor>(() => HeaderInterceptor(di<AppInfo>()))
-    ..registerFactory<RefreshTokenInterceptor>(() => RefreshTokenInterceptor(
-          di<UserLocalDataSource>(),
-          di<RefreshTokenApiService>(),
-          di<NoneAuthAppServerApiClient>(),
-        ))
+    // ..registerLazySingleton<AuthApiServices>(
+    //     () => AuthApiServices(di<UserLocalDataSource>()))
+    // ..registerFactory<FirebaseStorageErrorResponseMapper>(
+    //     () => FirebaseStorageErrorResponseMapper())
+    // ..registerFactory<JsonArrayErrorResponseMapper>(
+    //     () => JsonArrayErrorResponseMapper())
+    // ..registerFactory<AccessTokenInterceptor>(
+    //     () => AccessTokenInterceptor(di<UserLocalDataSource>()))
+    // ..registerFactory<HeaderInterceptor>(() => HeaderInterceptor(di<AppInfo>()))
+    // ..registerFactory<RefreshTokenInterceptor>(() => RefreshTokenInterceptor(
+    //       di<UserLocalDataSource>(),
+    //       di<RefreshTokenApiService>(),
+    //       di<NoneAuthAppServerApiClient>(),
+    //     ))
     ..registerFactory<CustomLogInterceptor>(() => CustomLogInterceptor())
     ..registerLazySingleton<AppCubit>(() => AppCubit())
     ..registerLazySingleton<WidgetUtil>(() => WidgetUtil())

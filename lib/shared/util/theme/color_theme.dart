@@ -28,6 +28,7 @@ class DColorSheme {
     onBackground: customColor100,
     onError: Colors.redAccent,
     brightness: Brightness.light,
+    inverseSurface: Color.fromRGBO(55, 55, 55, 1),
   );
   static const ColorScheme darkColorScheme = ColorScheme(
     primary: customColor900,
@@ -42,6 +43,7 @@ class DColorSheme {
     onSurface: Colors.white,
     onBackground: Colors.white,
     onError: Colors.black,
+    inversePrimary: customSurfaceWhite,
     brightness: Brightness.dark,
   );
 }
